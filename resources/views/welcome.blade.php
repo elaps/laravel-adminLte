@@ -19,7 +19,5 @@
             @if (Route::has('login'))
                 <livewire:welcome.navigation />
             @endif
-
-            <livewire:pages.auth.login />
     </body>
 </html>

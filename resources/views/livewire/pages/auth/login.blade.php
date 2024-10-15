@@ -28,6 +28,7 @@ class extends Component {
 @section('title')
     {{ __('Вход') }}
 @endsection
+
 <div>
     <!-- Session Status -->
     <form wire:submit="login">
@@ -56,7 +57,7 @@ class extends Component {
             </div>
             <div class="col-4">
                 <div class="d-grid gap-2">
-                    <x-primary-button>{{ __('Log in') }}</x-primary-button>
+                    <x-btn type="primary">{{ __('Log in') }}</x-btn>
                 </div>
             </div>
         </div>
