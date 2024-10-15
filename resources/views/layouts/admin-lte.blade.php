@@ -116,19 +116,7 @@
                 <!--end::Fullscreen Toggle-->
 
                 <!--begin::User Menu Dropdown-->
-                <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <span class="d-none d-md-inline">Alexander Pierce</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-
-                        <li>
-                            <a href="{{ route('profile') }}" wire:navigate class="btn btn-default btn-flat">Profile</a>
-                            <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
-                        </li>
-
-                    </ul>
-                </li>
+                <livewire:layout.profile-dropdown />
                 <!--end::User Menu Dropdown-->
 
             </ul>

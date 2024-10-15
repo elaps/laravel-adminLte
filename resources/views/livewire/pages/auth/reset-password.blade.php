@@ -97,9 +97,9 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
+            <x-btn type="primary">
                 {{ __('Reset Password') }}
-            </x-primary-button>
+            </x-btn>
         </div>
     </form>
 </div>

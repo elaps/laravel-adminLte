@@ -71,9 +71,9 @@ new #[Layout('layouts.guest')] class extends Component
             </div>
             <div class="col-4">
                 <div class="d-grid gap-2">
-                    <x-primary-button class="ms-4">
+                    <x-btn type="primary">
                         {{ __('Register') }}
-                    </x-primary-button>
+                    </x-btn>
                 </div>
             </div>
         </div>

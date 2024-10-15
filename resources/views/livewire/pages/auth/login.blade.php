@@ -7,7 +7,7 @@ use Livewire\Volt\Component;
 
 new
 #[Layout('layouts.guest')]
-#[\Livewire\Attributes\Title('LLLL')]
+#[\Livewire\Attributes\Title('Вход')]
 class extends Component {
     public LoginForm $form;
 
@@ -25,9 +25,6 @@ class extends Component {
     }
 }; ?>
 
-@section('title')
-    {{ __('Вход') }}
-@endsection
 
 <div>
     <!-- Session Status -->

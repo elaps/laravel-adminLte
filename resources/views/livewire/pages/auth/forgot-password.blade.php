@@ -45,8 +45,7 @@ new #[Layout('layouts.guest')] class extends Component
     </div>
 
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <!--x-auth-session-status class="mb-4" :status="session('status')" /-->
     <form wire:submit="sendPasswordResetLink">
         <!-- Email Address -->
         <x-form-field :label="__('Email')"
@@ -56,9 +55,9 @@ new #[Layout('layouts.guest')] class extends Component
                       type="email"/>
 
         <div class="d-flex justify-content-end mt-4" >
-            <x-primary-button>
+            <x-btn type="primary">
                 {{ __('Email Password Reset Link') }}
-            </x-primary-button>
+            </x-btn>
         </div>
 
     </form>

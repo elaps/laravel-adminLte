@@ -15,7 +15,7 @@ Volt::route('dashboard3', 'pages.dashboard.index3')
     ->middleware(['auth', 'verified'])
     ->name('dashboard3');
 
-Route::view('profile', 'profile')
+Volt::route('profile', 'pages.auth.profile')
     ->middleware(['auth'])
     ->name('profile');
 
