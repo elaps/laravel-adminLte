@@ -74,7 +74,7 @@ new class extends Component
         {{ __("Update your account's profile information and email address.") }}
     </p>
 
-    <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
+    <form wire:sconfirm="Точно??" wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <x-form-field :label="__('Name')"
                       model="name"
                       :placeholder="__('Current Password')"
@@ -112,7 +112,9 @@ new class extends Component
         </div>
 
         <div class="flex items-center gap-4">
-            <x-btn type="primary">{{ __('Save') }}</x-btn>
+            <x-btn wire:confirm="{{ __('Are you sure?') }}"  type="primary">{{ __('Save') }}</x-btn>
         </div>
+
+
     </form>
 </section>

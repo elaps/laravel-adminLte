@@ -14,8 +14,7 @@ new class extends Component {
     /**
      * Update the password for the currently authenticated user.
      */
-    public function updatePassword(): void
-    {
+    public function updatePassword(): void {
         try {
             $validated = $this->validate([
                 'current_password' => ['required', 'string', 'current_password'],
@@ -33,9 +32,16 @@ new class extends Component {
 
         $this->reset('current_password', 'password', 'password_confirmation');
 
-        $this->dispatch('alert',['type'=>'success','text'=>__('Password updated.')]);
+        $this->dispatch('alert', ['type' => 'success', 'text' => __('Password updated.')]);
     }
 
+    public function test() {
+        dd('test1');
+    }
+
+    public function test2() {
+        dd('test2');
+    }
 };
 
 ?>
@@ -51,7 +57,7 @@ new class extends Component {
         </p>
     </header>
 
-    <form wire:submit="updatePassword" class="mt-6 space-y-6">
+    <form wire:sconfirm="{{__('Точно сменить ?')}}" wire:submit="updatePassword" class="mt-6 space-y-6">
 
         <x-form-field :label="__('Current Password')"
                       model="current_password"
@@ -71,8 +77,7 @@ new class extends Component {
 
 
         <div class="flex items-center gap-4">
-            <x-btn-confirm :confirm="__('Точно сменить пароль?')" type="primary">{{ __('Save') }}</x-btn-confirm>
-
+            <x-btn type="primary">{{ __('Save') }}</x-btn>
         </div>
     </form>
 </section>

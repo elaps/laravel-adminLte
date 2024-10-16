@@ -520,3 +520,54 @@ onDOMContentLoaded(() => {
         });
     });
 });
+
+
+Livewire.directive('sconfirm', ({ el, directive, component, cleanup }) => {
+    let content =  directive.expression
+    let attr = el.attributes.getNamedItem('wire:click')
+    let eventType = 'click'
+    let method
+    if(attr){
+        method = attr.value
+        eventType = 'click'
+    }else{
+        attr = el.attributes.getNamedItem('wire:submit')
+        if(attr){
+            method = attr.value
+            eventType = 'submit'
+        }
+    }
+    let Event = e => {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        var defaults = {
+            title: '',
+            text: content,
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            cancelButtonClass: "btn-default",
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Ok',
+            closeOnConfirm: true
+        }
+
+        swal(defaults,
+            function () {
+                Livewire.find(component.id).call(method)
+            }
+        );
+
+    }
+    if (eventType=='click') {
+        el.addEventListener('click', Event, { capture: true })
+    }else {
+        el.addEventListener('submit', Event, { capture: true })
+    }
+    cleanup(() => {
+        if (eventType=='click') {
+        el.removeEventListener('click', Event)
+        } else {
+            el.removeEventListener('submit', Event)
+        }
+    })
+})
