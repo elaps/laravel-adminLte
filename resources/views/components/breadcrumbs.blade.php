@@ -5,7 +5,7 @@
     @foreach($items as $key=>$item)
         <li class="breadcrumb-item" @if($key==count($items)-1) aria-current="page" @endif>
             @if($item['route']??false)
-                <a href="{{route($item['route'])}}">{{$item['label']}}</a>
+                <a href="{{route($item['route'])}}" wire:navigate>{{$item['label']}}</a>
             @else
                 {{$item['label']??''}}
             @endif

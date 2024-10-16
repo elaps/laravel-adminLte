@@ -14,7 +14,9 @@ new class extends \Livewire\Volt\Component
 
 <li class="nav-item dropdown user-menu">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-        <span class="d-md-inline">{{ auth()->user()->name}}</span>
+        <span class="d-md-inline">
+            <span x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></span>
+        </span>
     </a>
     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
 

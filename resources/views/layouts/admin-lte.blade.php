@@ -211,10 +211,7 @@
         integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
 <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
 
-
-<script>
-
-</script>
+<div x-data @alert.window="toast($event.detail)"></div>
 
 </body>
 </html>

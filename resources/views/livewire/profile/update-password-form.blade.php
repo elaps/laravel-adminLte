@@ -6,8 +6,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Livewire\Volt\Component;
 
-new class extends Component
-{
+new class extends Component {
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
@@ -34,9 +33,12 @@ new class extends Component
 
         $this->reset('current_password', 'password', 'password_confirmation');
 
-        $this->dispatch('password-updated');
+        $this->dispatch('alert',['type'=>'success','text'=>__('Password updated.')]);
     }
-}; ?>
+
+};
+
+?>
 
 <section>
     <header>
@@ -69,11 +71,7 @@ new class extends Component
 
 
         <div class="flex items-center gap-4">
-            <x-btn type="primary">{{ __('Save') }}</x-btn>
-
-            <div class="me-3" on="password-updated">
-                {{ __('Saved.') }}
-            </div>
+            <x-btn-confirm :confirm="__('Точно сменить пароль?')" type="primary">{{ __('Save') }}</x-btn-confirm>
 
         </div>
     </form>

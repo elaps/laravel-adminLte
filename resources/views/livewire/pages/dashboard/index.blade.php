@@ -9,7 +9,8 @@ new
 #[Title('Главная')]
 class extends PageComponent {
     public $title = 'Главная1';
-}; ?>
+};
+?>
 
 <div>
  Привет!!
