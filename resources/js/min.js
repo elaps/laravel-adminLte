@@ -543,9 +543,11 @@ Livewire.directive('sconfirm', ({ el, directive, component, cleanup }) => {
         var defaults = {
             title: '',
             text: content,
+            animation: false,
+            animationSpeed: 1,
             showCancelButton: true,
             cancelButtonText: 'Cancel',
-            cancelButtonClass: "btn-default",
+            cancelButtonClass: "btn-light",
             confirmButtonClass: "btn-danger",
             confirmButtonText: 'Ok',
             closeOnConfirm: true

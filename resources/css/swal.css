@@ -684,3 +684,14 @@ body.stop-scrolling {
         transform: translateY(145%);
     }
 }
+[data-bs-theme="dark"] .sweet-alert{
+    background-color: var(--bs-dark);
+}
+.sa-button-container{
+    display:flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.sa-button-container .btn{
+    min-width: 100px;
+}
