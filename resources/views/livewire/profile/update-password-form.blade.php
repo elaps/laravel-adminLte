@@ -42,6 +42,7 @@ new class extends Component {
     public function test2() {
         dd('test2');
     }
+
 };
 
 ?>
@@ -57,22 +58,20 @@ new class extends Component {
         </p>
     </header>
 
-    <form wire:sconfirm="{{__('Точно сменить ?')}}" wire:submit="updatePassword" class="mt-6 space-y-6">
+    <form wire:submit="updatePassword" class="mt-6 space-y-6">
 
         <x-form-field :label="__('Current Password')"
                       model="current_password"
                       :placeholder="__('Current Password')"
-                      icon="bi bi-envelope"
-                      type="password"/>
+                      :options="[1,2,3,4,5,6,7,8,9,0]"
+                      type="checkbox"/>
         <x-form-field :label="__('New Password')"
                       model="password"
                       :placeholder="__('Current Password')"
-                      icon="bi bi-envelope"
                       type="password"/>
         <x-form-field :label="__('Confirm Password')"
                       model="password_confirmation"
                       :placeholder="__('Current Password')"
-                      icon="bi bi-envelope"
                       type="password"/>
 
 

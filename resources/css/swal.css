@@ -687,6 +687,9 @@ body.stop-scrolling {
 [data-bs-theme="dark"] .sweet-alert{
     background-color: var(--bs-dark);
 }
+[data-bs-theme="dark"] .sweet-overlay{
+    background-color: rgba(0, 0, 0, 0.8);
+ }
 .sa-button-container{
     display:flex;
     justify-content: flex-end;
