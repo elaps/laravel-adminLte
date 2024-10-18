@@ -149,6 +149,11 @@
                                 'url' => 'dashboard',
                                 'icon' => 'bi bi-circle'
                             ],
+                                               [
+                                        'label' => '2.1',
+                                        'url' => 'dashboard2',
+                                        'icon' => 'bi bi-circle'
+                                    ],
                             [
                                 'label' => '2',
 
@@ -206,12 +211,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
 
 
+@stack('scripts')
 <div x-data @alert.window="toast($event.detail)"></div>
-
-
 </body>
 </html>

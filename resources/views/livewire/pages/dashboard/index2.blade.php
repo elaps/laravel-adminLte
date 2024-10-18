@@ -30,14 +30,12 @@ class extends PageComponent {
 }; ?>
 
 <div x-data="{}" >
-
     {{$item}}
     <p>
     <a href="{{ route('dashboard') }}" wire:navigate> Назад</a>
     </p>
 
     <x-select2 model="item" :data="$data"></x-select2>
-
     <x-btn wire:click="test">Тест</x-btn>
 </div>
 

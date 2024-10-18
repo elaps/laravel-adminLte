@@ -232,7 +232,6 @@ onDOMContentLoaded(() => {
     }, 400);
 });
 
-
 const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
 const Default = {
     scrollbarTheme: "os-theme-light",
@@ -240,8 +239,9 @@ const Default = {
     scrollbarClickScroll: true,
 };
 
+/*
 //DOMContentLoaded
-document.addEventListener("livewire:navigated", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
     if (
         sidebarWrapper &&
@@ -256,6 +256,9 @@ document.addEventListener("livewire:navigated", function () {
         });
     }
 });
+
+*/
+
 
 /**
  * --------------------------------------------
@@ -573,3 +576,11 @@ Livewire.directive('sconfirm', ({ el, directive, component, cleanup }) => {
         }
     })
 })
+
+window.toast = function (event){
+    iziToast[event[0].type]({
+        title: '',
+        message:event[0].text,
+        position: 'topRight',
+    });
+}

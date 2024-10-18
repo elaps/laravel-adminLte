@@ -15,6 +15,8 @@ class extends PageComponent {
         3=>'item 3',
     ];
     public function test() {
+        $this->dispatch('alert', ['type' => 'success', 'text' => __('Password updated.')]);
+
         // Обработка данных
     }
 };
@@ -23,12 +25,25 @@ class extends PageComponent {
 
 <div>
     {{$item}}
-    <input type="text" name="dates" wire:model="item" >
-    <x-btn wire:click="test">Тест</x-btn>
+    <div wire:ignore>
+    <input type="text" class="form-control" name="dates" wire:model="item"  id="dates-h" >
+    </div>
+    <x-btn wire:sconfirm="!!!" wire:click="test">Тест</x-btn>
 </div>
+
+@assets
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/daterange.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endassets
 
 @script
 <script>
-    console.log('111')
+    $('input[name="dates"]').daterangepicker().on('apply.daterangepicker', function(ev, picker) {
+        var element = document.getElementById('dates-h');
+        element.value = picker.element.val() ;
+        element.dispatchEvent(new Event('input'));
+    });
 </script>
 @endscript
+
