@@ -6,7 +6,7 @@
     'model' => false,
     'icon' => false,
     'fl' => 'h',
-    'options'  => []
+    'data'  => []
 ])
 
 <?php
@@ -55,7 +55,17 @@ if ($errors->get($model)) {
                             @endforeach
                         </select>
                         @break;
+                    @case('select2')
 
+                        <x-select2 model="form.email"
+                                  :data="$data"
+                                  :ingroup="!!$icon"
+                        ></x-select2>
+                        @break;
+                    @case('textarea')
+                        <textarea id="{{$attribute}}" wire:model="{{$model}}" class="form-control {{$class}}">
+                        </textarea>
+                        @break;
 
                     @default
                         <input type="{{$type}}" id="{{$attribute}}" wire:model="{{$model}}"

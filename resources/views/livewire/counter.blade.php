@@ -11,5 +11,6 @@ new class extends Component {
 
 <div>
     <button wire:click="increment">Increment</button>
+    <input type="text" wire:model="count">
     <p>{{ $count }}</p>
 </div>

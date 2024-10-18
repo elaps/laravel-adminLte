@@ -32,9 +32,10 @@ class extends Component {
 
         <x-form-field :label="__('Email')"
                       model="form.email"
-                      placeholder="Email"
+                      placeholder=""
                       icon="bi bi-envelope"
-                      type="email"/>
+                      type="text"/>
+
 
         <x-form-field :label="__('Password')"
                       model="form.password"
@@ -77,5 +78,13 @@ class extends Component {
 </div>
 
 
+@script
+    <script>
+        // Инициализация после сабмита формы
+        document.addEventListener('livewire:loaded', () => {
+            alert('2')
+            });
 
+</script>
+@endscript
 

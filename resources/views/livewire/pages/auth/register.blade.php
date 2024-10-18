@@ -6,23 +6,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
-{
+new
+#[Layout('layouts.guest')]
+#[Title('Register')]
+class extends Component {
     public string $name = '';
-    public string $email = '';
+    public string $email = 'user@user.com';
     public string $password = '';
     public string $password_confirmation = '';
 
     /**
      * Handle an incoming registration request.
      */
-    public function register(): void
-    {
+    public function register(): void {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -35,15 +37,20 @@ new #[Layout('layouts.guest')] class extends Component
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
 }; ?>
-@section('title')
-    {{ __('Регистрация') }}
-@endsection
 <div>
     <form wire:submit="register">
         <x-form-field :label="__('Name')"
                       model="name"
                       icon="bi bi-person"
                       type="text"/>
+
+        <x-select2 model="email"
+                   :data="[
+                ''=>'',
+                'admin@admin.com'=>'Admin',
+                'user@user.com'=>'User',
+            ]"
+        ></x-select2>
 
         <x-form-field :label="__('Email')"
                       model="email"

@@ -63,8 +63,7 @@ new class extends Component {
         <x-form-field :label="__('Current Password')"
                       model="current_password"
                       :placeholder="__('Current Password')"
-                      :options="[1,2,3,4,5,6,7,8,9,0]"
-                      type="checkbox"/>
+                      type="text"/>
         <x-form-field :label="__('New Password')"
                       model="password"
                       :placeholder="__('Current Password')"
