@@ -24,7 +24,9 @@ $id = 'select2-' . $attribute;
 @assets
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/select2.js"></script>
-@vite(['select2.scss'])
+
+@vite(['resources/css/select2.scss'])
+
 @endassets
 
 @script

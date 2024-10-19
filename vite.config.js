@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/css/app.scss',
                 'resources/js/app.js',
                 'resources/css/select2.scss',
-                'resources/css/daterange.css'
+                'resources/css/daterange.scss'
             ],
             refresh: true,
         }),

@@ -21,6 +21,7 @@ $id = 'date-' . $attribute;
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/daterange.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@vite(['resources/css/daterange.scss'])
 @endassets
 
 @script
