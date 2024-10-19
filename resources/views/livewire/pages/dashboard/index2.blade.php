@@ -14,7 +14,8 @@ class extends PageComponent {
         ['label'=>'Dashboard v2'],
     ];
 
-    public $item=3;
+    public $item=1;
+    public $item2=2;
 
     public $data = [
         1=>'Item 1',
@@ -34,8 +35,8 @@ class extends PageComponent {
     <p>
     <a href="{{ route('dashboard') }}" wire:navigate> Назад</a>
     </p>
-
-    <x-select2 model="item" :data="$data"></x-select2>
+    <x-form-field model="item" :data="$data" type="select2" label="Проверка" icon="calendar" ></x-form-field>
+    <x-form-field model="item2" :data="$data" type="select2" label="Проверка" icon="calendar"></x-form-field>
     <x-btn wire:click="test">Тест</x-btn>
 </div>
 

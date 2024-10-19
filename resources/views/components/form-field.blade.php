@@ -57,10 +57,24 @@ if ($errors->get($model)) {
                         @break;
                     @case('select2')
 
-                        <x-select2 model="form.email"
+                        <x-select2 model="{{$model}}"
                                   :data="$data"
                                   :ingroup="!!$icon"
                         ></x-select2>
+                        @break;
+                    @case('daterange')
+
+                        <x-daterange-picker  model="{{$model}}"
+                                   :data="$data"
+                                   :ingroup="!!$icon"
+                        ></x-daterange-picker>
+                        @break;
+                    @case('date')
+                        <x-daterange-picker  model="{{$model}}"
+                                             :data="$data"
+                                             :ingroup="!!$icon"
+                                             :mode="'single'"
+                        ></x-daterange-picker>
                         @break;
                     @case('textarea')
                         <textarea id="{{$attribute}}" wire:model="{{$model}}" class="form-control {{$class}}">
@@ -79,7 +93,7 @@ if ($errors->get($model)) {
             </div>
         @endif
         @if($icon)
-            <div class="input-group-text"><span class="bi {{$icon}}"></span></div>
+            <div class="input-group-text"><span class="bi bi-{{$icon}}"></span></div>
         @endif
     </div>
 
