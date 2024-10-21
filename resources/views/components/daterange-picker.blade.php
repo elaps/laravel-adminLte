@@ -11,15 +11,15 @@ $attribute = explode('.', $model)[1] ?? $model;
 $id = 'date-' . $attribute;
 ?>
 
-<div wire:ignore style="flex-grow: 1;" >
+<div wire:ignore style="flex-grow: 1;" class="{{$ingroup?'ingroup':''}}" >
     <div>
         <input  type="text" class="form-control daterange" name="dates" wire:model="{{$model}}"  id="{{$id}}" data-mode="{{$mode}}" >
     </div>
 </div>
 
 @assets
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/daterange.js"></script>
+<script type="text/javascript" src="/js/jquery.js" async></script>
+<script type="text/javascript" src="/js/daterange.js" defer></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @vite(['resources/css/daterange.scss'])
 @endassets

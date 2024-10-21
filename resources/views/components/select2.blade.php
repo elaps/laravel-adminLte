@@ -12,7 +12,7 @@ $id = 'select2-' . $attribute;
 
 <input type="hidden" wire:model="{{$model}}" id="{{$id.'-h'}}">
 
-<div wire:ignore style="flex-grow: 1;">
+<div wire:ignore style="flex-grow: 1;" class="{{$ingroup?'ingroup':''}}">
     <select id="{{$id}}" style="display: none" class="select2">
         @foreach($data as $key=>$label)
             <option value="{{$key}}">{{$label}}</option>
@@ -22,8 +22,8 @@ $id = 'select2-' . $attribute;
 
 
 @assets
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/select2.js"></script>
+<script type="text/javascript" src="/js/jquery.js" async></script>
+<script type="text/javascript" src="/js/select2.js" defer></script>
 
 @vite(['resources/css/select2.scss'])
 
