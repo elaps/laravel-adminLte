@@ -28,6 +28,7 @@ class extends PageComponent {
     {{$item}}
     <x-form-field model="item" type="date" label="Проверка" ></x-form-field>
     <x-form-field model="item2" type="daterange" label="Проверка" icon="calendar"></x-form-field>
+    <x-editorjs>111</x-editorjs>
     <x-btn wire:sconfirm="!!!" wire:click="test">Тест</x-btn>
 </div>
 
