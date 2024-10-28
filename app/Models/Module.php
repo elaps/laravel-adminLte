@@ -11,43 +11,35 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Company
+ * Class Module
  * 
  * @property int $id
- * @property string $name
- * @property string $alias
- * @property int $user_id
+ * @property string $title
+ * @property int $company_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property User $user
- * @property Collection|Module[] $modules
+ * @property Company $company
  * @property Collection|Track[] $tracks
  *
  * @package App\Models
  */
-class Company extends Model
+class Module extends Model
 {
-	protected $table = 'companies';
+	protected $table = 'modules';
 
 	protected $casts = [
-		'user_id' => 'int'
+		'company_id' => 'int'
 	];
 
 	protected $fillable = [
-		'name',
-		'alias',
-		'user_id'
+		'title',
+		'company_id'
 	];
 
-	public function user()
+	public function company()
 	{
-		return $this->belongsTo(User::class);
-	}
-
-	public function modules()
-	{
-		return $this->hasMany(Module::class);
+		return $this->belongsTo(Company::class);
 	}
 
 	public function tracks()

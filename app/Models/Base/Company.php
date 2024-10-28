@@ -4,8 +4,11 @@
  * Created by Reliese Model.
  */
 
-namespace App\Models;
+namespace App\Models\Base;
 
+use App\Models\Module;
+use App\Models\Track;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Collection|Module[] $modules
  * @property Collection|Track[] $tracks
  *
- * @package App\Models
+ * @package App\Models\Base
  */
 class Company extends Model
 {
@@ -32,12 +35,6 @@ class Company extends Model
 
 	protected $casts = [
 		'user_id' => 'int'
-	];
-
-	protected $fillable = [
-		'name',
-		'alias',
-		'user_id'
 	];
 
 	public function user()

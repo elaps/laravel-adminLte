@@ -4,8 +4,12 @@
  * Created by Reliese Model.
  */
 
-namespace App\Models;
+namespace App\Models\Base;
 
+use App\Models\Company;
+use App\Models\Lesson;
+use App\Models\Track;
+use App\Models\UserTask;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Collection|UserTask[] $user_tasks
  * @property Collection|Track[] $tracks
  *
- * @package App\Models
+ * @package App\Models\Base
  */
 class User extends Model
 {
@@ -35,19 +39,6 @@ class User extends Model
 
 	protected $casts = [
 		'email_verified_at' => 'datetime'
-	];
-
-	protected $hidden = [
-		'password',
-		'remember_token'
-	];
-
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'remember_token'
 	];
 
 	public function companies()
