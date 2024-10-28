@@ -1,76 +1,73 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Class User
- * 
- * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Collection|Company[] $companies
- * @property Collection|Lesson[] $lessons
- * @property Collection|UserTask[] $user_tasks
- * @property Collection|Track[] $tracks
- *
- * @package App\Models
- */
-class User extends Model
+class User extends Authenticatable
 {
-	protected $table = 'users';
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
-	protected $casts = [
-		'email_verified_at' => 'datetime'
-	];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
-	protected $hidden = [
-		'password',
-		'remember_token'
-	];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'remember_token'
-	];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
-	public function companies()
-	{
-		return $this->hasMany(Company::class);
-	}
 
-	public function lessons()
-	{
-		return $this->belongsToMany(Lesson::class, 'user_lessons')
-					->withPivot('id', 'started_at', 'status', 'time', 'grade')
-					->withTimestamps();
-	}
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
 
-	public function user_tasks()
-	{
-		return $this->hasMany(UserTask::class);
-	}
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'user_lessons')
+            ->withPivot('id', 'started_at', 'status', 'time', 'grade')
+            ->withTimestamps();
+    }
 
-	public function tracks()
-	{
-		return $this->belongsToMany(Track::class, 'user_tracks')
-					->withPivot('id', 'started_at', 'finished_at', 'done_percent', 'status')
-					->withTimestamps();
-	}
+    public function user_tasks()
+    {
+        return $this->hasMany(UserTask::class);
+    }
+
+    public function tracks()
+    {
+        return $this->belongsToMany(Track::class, 'user_tracks')
+            ->withPivot('id', 'started_at', 'finished_at', 'done_percent', 'status')
+            ->withTimestamps();
+    }
 }
