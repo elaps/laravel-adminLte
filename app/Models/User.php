@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -38,8 +37,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
+    protected function casts(): array {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
@@ -47,25 +45,21 @@ class User extends Authenticatable
     }
 
 
-    public function companies()
-    {
+    public function companies() {
         return $this->hasMany(Company::class);
     }
 
-    public function lessons()
-    {
+    public function lessons() {
         return $this->belongsToMany(Lesson::class, 'user_lessons')
             ->withPivot('id', 'started_at', 'status', 'time', 'grade')
             ->withTimestamps();
     }
 
-    public function user_tasks()
-    {
+    public function user_tasks() {
         return $this->hasMany(UserTask::class);
     }
 
-    public function tracks()
-    {
+    public function tracks() {
         return $this->belongsToMany(Track::class, 'user_tracks')
             ->withPivot('id', 'started_at', 'finished_at', 'done_percent', 'status')
             ->withTimestamps();

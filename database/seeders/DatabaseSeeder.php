@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@user.com',
             'password' => '11111111',
         ]);
-        Company::factory(5)->create();
+        Company::factory(500)->create();
         Module::factory(50)->create();
         Track::factory(100)->create();
 

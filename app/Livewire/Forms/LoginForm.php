@@ -16,7 +16,7 @@ class LoginForm extends Form
     public string $email = 'admin@admin.com';
 
     #[Validate('required|string')]
-    public string $password = '12345678';
+    public string $password = '11111111';
 
     #[Validate('boolean')]
     public bool $remember = false;

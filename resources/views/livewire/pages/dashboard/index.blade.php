@@ -25,7 +25,6 @@ class extends PageComponent {
 ?>
 
 <div>
-    {{$item}}
     <x-form-field model="item" type="date" label="Проверка" ></x-form-field>
     <x-form-field model="item2" type="daterange" label="Проверка" icon="calendar"></x-form-field>
     <x-editorjs>111</x-editorjs>

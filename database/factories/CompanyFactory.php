@@ -18,7 +18,7 @@ class CompanyFactory extends Factory
      */
     public function definition(): array
     {
-        $company = fake()->company();
+        $company = fake()->unique()->company();
         return [
             'name'=> $company,
             'alias'=> Str::slug($company),

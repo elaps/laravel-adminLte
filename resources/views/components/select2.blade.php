@@ -22,7 +22,7 @@ $id = 'select2-' . $attribute;
 
 
 @assets
-<script type="text/javascript" src="/js/jquery.js" async></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/select2.js" defer></script>
 
 @vite(['resources/css/select2.scss'])
@@ -30,7 +30,7 @@ $id = 'select2-' . $attribute;
 @endassets
 
 @script
-<script>
+<script defer>
     $('.select2').each(
         (i, el) => {
             $(el).select2({

@@ -19,4 +19,8 @@ Volt::route('profile', 'pages.auth.profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Volt::route('company', 'pages.trener.company.index')
+    ->middleware(['auth'])
+    ->name('company.index');
+
 require __DIR__.'/auth.php';
