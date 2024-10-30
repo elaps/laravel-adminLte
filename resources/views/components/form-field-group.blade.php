@@ -27,7 +27,9 @@
                 {{$errorMessage??''}}
             </div>
         @else
-            <label for="{{$attribute}}" class="form-label">{{ $label ?? '' }}</label>
+            @if($label)
+                <label for="{{$attribute}}" class="form-label">{{ $label ?? '' }}</label>
+            @endif
             {{ $slot }}
             <div class="invalid-feedback">
                 {{$errorMessage??''}}

@@ -8,27 +8,34 @@ new
 #[Layout('layouts.admin-lte')]
 #[Title('Главная')]
 class extends PageComponent {
+    public $filterForm = [];
 
     public $breadcrumbs = [
         ['label' => 'Home', 'route' => 'welcome'],
         ['label' => 'Dashboard', 'route' => 'dashboard'],
     ];
 
+    public function mount() {
+        $this->filterForm['id'] = request()->get('id');
+        $this->filterForm['user_id'] = null;
+    }
+
     public function with() {
-        return ['items'=> \App\Models\Company::where('user_id', auth()->user()->id)];
+        return ['model'=> new \App\Models\AdminModels\CompanyAdminModel()];
+    }
+
+    public function filter() {
+        $this->dispatch('reloaded');
+
     }
 };
 
 ?>
-<div>
+<div >
+    @dump($filterForm)
     @php
     echo \App\Http\TableView::widget([
-        'columns'=>[
-            'id',
-            'name:Название',
-            'alias:Поддомен',
-        ],
-        'rows' =>  $items->paginate(10),
-        ]);
+        'model' => $model,
+    ]);
     @endphp
 </div>

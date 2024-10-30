@@ -9,9 +9,7 @@ class TableView {
     public static function widget($options) {
         $html = view('components.table-view.table',
             [
-                'columns' => $options['columns']??[],
-                'rows' => $options['rows']??[],
-                'search-model'
+                'model' => $options['model']
             ])->render();;
         return $html;
     }

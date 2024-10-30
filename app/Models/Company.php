@@ -30,8 +30,6 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model{
     use HasFactory;
 
-	protected $table = 'companies';
-
 	protected $casts = [
 		'user_id' => 'int'
 	];
@@ -56,4 +54,5 @@ class Company extends Model{
 	{
 		return $this->hasMany(Track::class);
 	}
+
 }

@@ -41,11 +41,11 @@ if ($errors->get($model)) {
 
     @endif
 @else
-<x-form-field-group :label="$label" :layout="$fl" :errorMessage="$errorMessage" :type="$type">
+<x-form-field-group :label="$label" :layout="$fl" :errorMessage="$errorMessage" :type="$type" >
     <div class="input-group {{$class}}">
         @if($fl=='f')
             <div class="form-floating">
-                @endif
+        @endif
                 {{-- Вынести в отдельный компонент --}}
                 @switch($type)
                     @case('select')
@@ -84,14 +84,17 @@ if ($errors->get($model)) {
                     @default
                         <input type="{{$type}}" id="{{$attribute}}" wire:model="{{$model}}"
                                class="form-control  {{$class}}"
-                               placeholder="{{ $placeholder ?? '' }}">
+                               placeholder="{{ $placeholder ?? '' }}"
+                                {{ $attributes }}
+                        >
 
                 @endswitch
 
-                @if($fl=='f')
+        @if($fl=='f')
                     <label for="{{$attribute}}" class="form-label">{{ $label ?? '' }}</label>
             </div>
         @endif
+
         @if($icon)
             <div class="input-group-text"><span class="bi bi-{{$icon}}"></span></div>
         @endif

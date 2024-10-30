@@ -1,26 +1,40 @@
 @props([
-    'columns' => [],
-    'rows'=>[]
+    'model' => null,
     ]
 )
 
+<form wire:submit="filter" id="filter" >
 <table class="table table-bordered">
-
     <thead>
     <tr>
-        @foreach($columns as $column)
-            <x-table-view.th :column="$column"/>
-
+        @foreach($model->columns as $key => $column)
+            <x-table-view.th :column="$model->getColumnTh($key)"/>
         @endforeach
     </tr>
+
+
+    <tr >
+        @foreach($model->columns as $key => $column)
+            <x-table-view.filter :column="$model->getColumnFilterTh($key)"/>
+        @endforeach
+    </tr>
+
+
     </thead>
     <tbody>
-    @foreach($rows as $row)
-        <tr>
-            @foreach($columns as $column)
-                <x-table-view.td :column="$column" :row="$row"/>
-            @endforeach
-        <tr>
-    @endforeach
+
     </tbody>
 </table>
+<button >qq</button>
+</form>
+
+<script>
+    function submitForm() {
+        var form = document.getElementById('filter');
+        var event = new Event('submit', {
+            bubbles: true,
+            cancelable: true
+        });
+        //form.dispatchEvent(event);
+    }
+</script>

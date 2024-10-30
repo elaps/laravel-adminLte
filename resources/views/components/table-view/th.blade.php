@@ -1,12 +1,32 @@
 @props([
     'column' => ''
 ])
+
 @php
-    if(!is_array($column)){
-        $parts = explode(':',$column);
-        $attribute = $parts[0];
-        $label = $parts[1]??$attribute;
-        $align = $parts[2]??'';
-    }
+
 @endphp
-<th>{{$label}}</th>
+
+<th>
+    @if($column['sort']!==false)
+        @php
+            if($column['sort']==0){
+                $attr = $column['attribute'];
+                $mark = '';
+            }
+            if($column['sort']==1){
+                $attr = '-'.$column['attribute'];
+                $mark = '▴';
+            }
+            if($column['sort']==-1){
+                $attr = $column['attribute'];
+                $mark = '▾';
+            }
+            $params = request()->all();
+            $params['sorted_at'] = $attr;
+            $q = http_build_query($params);
+        @endphp
+        <a href="?{{$q}}" wire:navigate>{{$column['label']}} {{$mark}}</a>
+    @else
+        {{$column['label']}}
+    @endif
+</th>

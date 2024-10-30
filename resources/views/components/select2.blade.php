@@ -12,7 +12,7 @@ $id = 'select2-' . $attribute;
 
 <input type="hidden" wire:model="{{$model}}" id="{{$id.'-h'}}">
 
-<div wire:ignore style="flex-grow: 1;" class="{{$ingroup?'ingroup':''}}">
+<div style="flex-grow: 1;" class="{{$ingroup?'ingroup':''}}">
     <select id="{{$id}}" style="display: none" class="select2">
         @foreach($data as $key=>$label)
             <option value="{{$key}}">{{$label}}</option>
@@ -31,11 +31,44 @@ $id = 'select2-' . $attribute;
 
 @script
 <script defer>
+    Livewire.hook('morph.updated', ({ el, component }) => {
+
+        $('.select2').each(
+            (i, el) => {
+                var z = $(el).select2({
+                    theme: 'bootstrap-5',
+                    width: '100%',
+                    'allowClear': true,
+                    'placeholder': '...',
+                })
+                try {
+                    var val = $wire.get($('#'+el.id+'-h').attr('wire:model') )
+                    if(val==''){
+                        val = null
+                    }
+                }catch (e) {
+                }
+                if(typeof val !== 'undefined' ){
+                    z.val(val).trigger('change')
+                }
+                z.on('change', function (e) {
+                    var value = $(this).val();
+                    var element = document.getElementById(e.target.id+'-h');
+                    element.value = value;
+                    element.dispatchEvent(new Event('input'));
+                })
+            }
+        )
+
+    })
+
     $('.select2').each(
         (i, el) => {
             $(el).select2({
                 theme: 'bootstrap-5',
                 width: '100%',
+                'allowClear': true,
+                'placeholder': '...'
             }).val($wire.get($('#'+el.id+'-h').attr('wire:model') ) ).trigger('change')
 
             $(el).on('change', function (e) {
@@ -46,5 +79,6 @@ $id = 'select2-' . $attribute;
             })
         }
     )
+
 </script>
 @endscript
